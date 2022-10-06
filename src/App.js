@@ -14,7 +14,7 @@ class App extends React.Component {
                 price: 99,
                 title: 'Apple Watch',
                 qty: 1,
-                img: 'https://i5.walmartimages.com/asr/ab3fca3a-a285-41f4-9908-82a65fe8c58f_1.928cd18ca95d4b8821e76c7c5598e385.jpeg',
+                img: 'https://www.applestore.pk/wp-content/uploads/2021/04/MTPL2ref_VW_34FRwatch-44-stainless-graphite-cell-6s_VW_34FR_WF_CO.jpg  ',
                 id: 1
             },
             {
@@ -89,6 +89,19 @@ class App extends React.Component {
 
   }
 
+  getCartTotal = () => {
+    const {products} = this.state;
+    
+    let cartTotal = 0;
+
+    products.forEach((product) => {
+      cartTotal = cartTotal + (product.qty * product.price)
+    })
+
+    return cartTotal;
+
+  }
+
   render(){
 
     const {products} = this.state;
@@ -103,6 +116,9 @@ class App extends React.Component {
           onDecreaseQuantity = {this.handleDecreaseQuantity}
           onDeleteProduct = {this.handleDeleteProduct}
         />
+
+        <div style={ {fontSize: 20, padding: 10} }> TOTAL: {this.getCartTotal()} </div>
+      
       </div>
     );  
   }
