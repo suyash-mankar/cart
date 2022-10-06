@@ -12,23 +12,23 @@ class App extends React.Component {
         products: [
             {
                 price: 99,
-                title: 'Watch',
+                title: 'Apple Watch',
                 qty: 1,
-                img: '',
+                img: 'https://i5.walmartimages.com/asr/ab3fca3a-a285-41f4-9908-82a65fe8c58f_1.928cd18ca95d4b8821e76c7c5598e385.jpeg',
                 id: 1
             },
             {
                 price: 999,
-                title: 'Phone',
+                title: 'iPhone',
                 qty: 10,
-                img: '',
+                img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphone14pro-202209_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1663611329204',
                 id: 2
             },
             {
                 price: 999,
-                title: 'Laptop',
+                title: 'Macbook',
                 qty: 4,
-                img: '',
+                img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp-spacegray-select-202206?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653493200207',
                 id: 3
             },
         ]
