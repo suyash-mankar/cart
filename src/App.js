@@ -14,7 +14,7 @@ class App extends React.Component {
                 price: 99,
                 title: 'Apple Watch',
                 qty: 1,
-                img: 'https://www.applestore.pk/wp-content/uploads/2021/04/MTPL2ref_VW_34FRwatch-44-stainless-graphite-cell-6s_VW_34FR_WF_CO.jpg  ',
+                img: 'https://www.applestore.pk/wp-content/uploads/2021/04/MTPL2ref_VW_34FRwatch-44-stainless-graphite-cell-6s_VW_34FR_WF_CO.jpg',
                 id: 1
             },
             {
