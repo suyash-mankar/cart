@@ -1,7 +1,8 @@
 import React from 'react';
 import Cart from './Cart';
 import Navbar from './Navbar';
-
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
 
 class App extends React.Component {
 
@@ -9,32 +10,39 @@ class App extends React.Component {
 
     super();
     this.state = {
-        products: [
-            {
-                price: 99,
-                title: 'Apple Watch',
-                qty: 1,
-                img: 'https://www.applestore.pk/wp-content/uploads/2021/04/MTPL2ref_VW_34FRwatch-44-stainless-graphite-cell-6s_VW_34FR_WF_CO.jpg',
-                id: 1
-            },
-            {
-                price: 999,
-                title: 'iPhone',
-                qty: 10,
-                img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-card-40-iphone14pro-202209_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1663611329204',
-                id: 2
-            },
-            {
-                price: 999,
-                title: 'Macbook',
-                qty: 4,
-                img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp-spacegray-select-202206?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653493200207',
-                id: 3
-            },
-        ]
+          products: [],
+          loading: true
     }
+  }
 
-}
+  componentDidMount() {
+    firebase
+      .firestore()
+      .collection('products')
+      .get()
+      .then((snapshot) => {
+        console.log(snapshot);
+
+        snapshot.docs.map((doc) => {
+          console.log(doc.data());
+        });
+
+        const products = snapshot.docs.map((doc) => {
+          const data = doc.data();
+          data['id'] = doc.id;
+          return data;
+        })
+
+        // console.log(products);
+
+        this.setState({
+          // products: products
+          products,
+          loading: false
+        })
+
+      })
+  }
 
   handleIncreaseQuantity = (product) => {
 
@@ -104,7 +112,7 @@ class App extends React.Component {
 
   render(){
 
-    const {products} = this.state;
+    const {products, loading} = this.state;
 
 
     return (
@@ -117,8 +125,12 @@ class App extends React.Component {
           onDeleteProduct = {this.handleDeleteProduct}
         />
 
+        {loading && <h1> Loading Products ...</h1>}
+
         <div style={ {fontSize: 20, padding: 10} }> TOTAL: {this.getCartTotal()} </div>
       
+
+
       </div>
     );  
   }
