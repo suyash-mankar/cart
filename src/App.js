@@ -13,6 +13,7 @@ class App extends React.Component {
           products: [],
           loading: true
     }
+    this.db = firebase.firestore();
   }
 
   componentDidMount() {
@@ -44,8 +45,7 @@ class App extends React.Component {
 
     //   })
 
-     firebase
-      .firestore()
+     this.db
       .collection('products')
       .onSnapshot((snapshot) => {
         console.log(snapshot);
@@ -140,6 +140,26 @@ class App extends React.Component {
 
   }
 
+
+  addProduct = () => {
+    this.db
+      .collection('products')
+      .add({
+        img:'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-pro-12-select-wifi-spacegray-202104_GEO_IN_FMT_WHH?wid=1945&hei=2000&fmt=jpeg&qlt=95&.v=1617923524000',
+        price: 900,
+        qty: 3,
+        title: 'ipad'
+      })
+      .then((docRef)=> {
+        console.log('product have been added', docRef);
+      })
+      .catch((error)=>{
+        console.error('Error: ', error);
+      })
+
+  }
+
+
   render(){
 
     const {products, loading} = this.state;
@@ -148,6 +168,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar count={this.getCartCount()} />
+        <button onClick={this.addProduct} style={{padding: 10, fontSize:20}}> Add a product </button>
         <Cart
           products={products}
           onIncreaseQuantity = {this.handleIncreaseQuantity}
