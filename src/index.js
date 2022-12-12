@@ -5,19 +5,16 @@ import App from './App';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 
-
-
 const firebaseConfig = {
-    apiKey: "AIzaSyDAHDUoSOuqNFujd1alkaMXqj83k372iqw",
-    authDomain: "cart-2b619.firebaseapp.com",
-    projectId: "cart-2b619",
-    storageBucket: "cart-2b619.appspot.com",
-    messagingSenderId: "966911847967",
-    appId: "1:966911847967:web:de7081a0e0b73524ebaf2a"
-};
+    apiKey: "AIzaSyDE6KyuC83df2jBlng46misQX7iz6668jc",
+    authDomain: "practice-adaa8.firebaseapp.com",
+    projectId: "practice-adaa8",
+    storageBucket: "practice-adaa8.appspot.com",
+    messagingSenderId: "267511970269",
+    appId: "1:267511970269:web:45b4aa96ef697d349e1e34"
+  };
 
 firebase.initializeApp(firebaseConfig);
-export const firestore = firebase.firestore();
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
